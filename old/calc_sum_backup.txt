@@ -1,0 +1,21 @@
+<?php
+	header("Content-Type: text/plain");
+	$arg1 = '';
+	$arg2 = '';
+	if (isset($_GET['arg1']));
+    {
+        $arg1 = $_GET['arg1'];
+    }
+	
+	if (isset($_GET['arg2']));
+    {
+        $arg2 = $_GET['arg2'];
+    }
+	echo intval($arg1) + intval($arg2);
+    //if (!empty($arg1) or ($arg1 = 0)) and (!empty($arg2) or ($arg2 = 0))
+    //{
+    //    echo intval($arg1) + intval($arg2);
+   // }
+   //else
+    //{
+    //    header ('HTTP/1.1 400 Bad request');

@@ -1,0 +1,16 @@
+<?php
+	header("Content-Type: text/plain");
+	$my_name = '';
+    if (isset($_GET['name']));
+    {
+        $my_name = $_GET['name'];
+    }
+    if (!empty($my_name))
+    {
+        echo "Hello, Dear $my_name";
+    }
+    else
+    {
+        header ("status: 400 Bad name");
+    }
+	
