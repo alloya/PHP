@@ -24,32 +24,20 @@
     
     function checkIdentifier($str)
     {
-        $forbiddenCharacters = array("`","~","!","@","#","№","$","%","^","&","*","(",")","-","_","=","+",
-                                    "<",">",",",".","\/","?",";",":","\"","'","|","{","}","[","]");
-        if (is_numeric($str[0]) || array_key_exists($str[0], $forbiddenCharacters))
+        if (is_numeric($str[0]))
         {
-            $result = "It's incorrect identificator. First is in array or numeric\n";
+            $result = "It's incorrect identificator. First character must be a letter.\n";
         }
         else 
         {
-            $result = true;
-            $k = strlen($str);
-            while ($k != 0)
-            {
-                $result = array_key_exists($str[k], $forbiddenCharacters);
-                $k--;
-                if ($result == true)
-                {
-                    break;
-                }
-            }
-            if ($result == false)
+            $result = ctype_alnum($str);
+            if ($result == true)
             {
                 $result = "It is correct identificator";
             }
-            elseif ($result == true)
+            elseif ($result == false)
             {
-                $result = "It is incorrect identificator. Forbidden characters in it";
+                $result = "It is incorrect identificator. Only letters and numbers allowed.";
             }
         }
         return $result;
