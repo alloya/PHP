@@ -53,32 +53,50 @@
     {
         $i = 0;
         $k = 0;
-        while ($i < strlen($str))
+        if (ctype_digit($str) == false)
         {
-            if (ctype_upper($str[$i]))
+            
+            while ($i < strlen($str))
             {
-                $k +=1;
+                if (ctype_upper($str[$i]))
+                {
+                    $k +=1;
+                }
+                $i += 1;
             }
-            $i += 1;
-        }
         echo "isThereUppercase: " . 2 * (strlen($str) - $k) . "\n";
         $result = $result + 2 * (strlen($str) - $k);
+        }
+        else
+        {
+            echo "isThereUppercase: All digits\n";
+            return $result;
+        }
     }
     
     function isThereLowerCase($str, &$result)
     {
         $i = 0;
         $k = 0;
-        while ($i < strlen($str))
+        if (ctype_digit($str) == false)
         {
-            if (ctype_lower($str[$i]))
+            
+            while ($i < strlen($str))
             {
-                $k +=1;
+                if (ctype_lower($str[$i]))
+                {
+                    $k +=1;
+                }
+                $i += 1;
             }
-            $i += 1;
-        }
-        echo "isThereLowerCase: " . 2 * (strlen($str) - $k) . "\n";
+        echo "isThereLowercase: " . 2 * (strlen($str) - $k) . "\n";
         $result = $result + 2 * (strlen($str) - $k);
+        }
+        else
+        {
+            echo "isThereLowercase: All digits\n";
+            return $result;
+        }
     }
     
     function areAllLetters($str, &$result)
