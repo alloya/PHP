@@ -1,29 +1,63 @@
 <?
-    header("Content-Type: text/plain"); 
-    require_once('include/common.inc.php');
-    if (isset($_GET['str']))
+    function last($str)
     {
-        $str = $_GET['str'];
-        if ($str != null)
-        {
-            $result = 0;
-            lenght($str, $result);
-            numeric($str, $result);
-            isThereUppercase($str, $result);
-            isThereLowerCase($str, $result);
-            areAllLetters($str, $result);
-            areAllDigits($str, $result);
-            isThereRepeats($str, $result);
-            echo "Сила пароля = $result";
-        }
-        else
-        {
-            header('HTTP/1.1 400 Parameter is empty');
-        }
+        return array_pop(str_split($str));
     }
-    else
+    
+    function withoutLast($str)
     {
-        header('HTTP/1.1 400 Parameter required');
+        $tempArray = str_split($str);
+        $last = array_pop($tempArray);
+        return implode($tempArray);
+    }
+    
+    function reverse($str)
+    {
+        $tempArray = str_split($str);
+        while ($tempArray != null)
+        {
+            $element = array_pop($tempArray);
+            $newArray[] = $element;
+        }
+        return implode($newArray);
+    }
+    
+    function checkIdentifier($str)
+    {
+        if (is_numeric($str[0]))
+        {
+            $result = "It's incorrect identificator. First character must be a letter.\n";
+        }
+        else 
+        {
+            $result = ctype_alnum($str);
+            if ($result == true)
+            {
+                $result = "It is correct identificator";
+            }
+            elseif ($result == false)
+            {
+                $result = "It is incorrect identificator. Only letters and numbers allowed.";
+            }
+        }
+        return $result;
+    }
+    
+    function removeExtraBlanks($str)
+    {
+        var_dump ($str);
+        $tempArray = explode(" ", trim($str));
+        $k = 0;
+        while($k < count($tempArray))
+        {
+            if (strlen($tempArray[$k]) == 0)
+            {
+                unset($tempArray[$k]);
+            }
+            $k++;
+        }
+        //var_dump(preg_replace("/\s{2,}/", " ", trim($str)));  тоже вариант
+        return implode(' ', $tempArray);
     }
     
     function lenght($str, &$result)
@@ -132,6 +166,3 @@
         echo "isThereRepeats: " . $k . "\n";
         $result = $result - 2 * $k;
     }
-    
-    
-    
