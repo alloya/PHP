@@ -1,0 +1,4 @@
+SELECT * 
+FROM dvd
+INNER JOIN offer ON dvd.dvd_id = offer.dvd_id
+WHERE offer.return_date =  '0000-00-00'

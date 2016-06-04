@@ -1,0 +1,5 @@
+SELECT customer.first_name, customer.last_name, dvd.title
+FROM offer
+INNER JOIN dvd ON dvd.dvd_id = offer.dvd_id
+INNER JOIN customer ON customer.customer_id = offer.customer_id
+WHERE YEAR( offer.offer_date ) = YEAR( NOW( ) ) 

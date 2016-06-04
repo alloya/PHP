@@ -1,0 +1,26 @@
+CREATE TABLE `dvd`
+(
+dvd_id SERIAL,
+title VARCHAR(255) DEFAULT '',
+production_year MEDIUMINT(4)
+)
+
+CREATE TABLE `customer`
+(
+customer_id SERIAL,
+first_name VARCHAR(25) DEFAULT '',
+last_name VARCHAR(25) DEFAULT '',
+pasport_code INT(10) UNIQUE,
+registration_date DATE
+)
+
+CREATE TABLE `offer`
+(
+offer_id SERIAL,
+dvd_id BIGINT UNSIGNED,
+customer_id BIGINT UNSIGNED,
+offer_date DATE,
+return_date DATE,
+FOREIGN KEY (dvd_id) REFERENCES dvd(dvd_id),
+FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+)
